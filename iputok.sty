@@ -1,0 +1,59 @@
+\usepackage[top=30truemm,bottom=30truemm,left=27truemm,right=27truemm]{geometry}
+\usepackage[dvipdfmx]{graphicx}
+
+\makeatletter
+  \DeclareRobustCommand\nedo[1]{\gdef\@nedo{#1}}
+  \DeclareRobustCommand\title[2]{\gdef\@title{#1}\gdef\@etitle{#2}}
+  \DeclareRobustCommand\department[2]{\gdef\@department{#1}\gdef\@edepartment{#2}}
+  \DeclareRobustCommand\gakuban[1]{\gdef\@gakuban{#1}}
+  \DeclareRobustCommand\author[2]{\gdef\@author{#1}\gdef\@eauthor{#2}}
+  \DeclareRobustCommand\teachers[6]{
+    \gdef\@teachersone{#1}\gdef\@teacherstwo{#2}\gdef\@teachersthree{#3}
+    \gdef\@eteachersone{#1}\gdef\@eteacherstwo{#2}\gdef\@eteachersthree{#3}
+  }
+  \def\@maketitle{
+    \newpage
+    \begin{center}
+      {\large\@nedo~年度\quad 卒業論文\par}
+      \vskip 2.5em
+      {\Large \@title \par}
+      \vskip 3em
+      {\large \@etitle \par}
+      \vskip 5em
+      {\large 大阪国際工科専門職大学\par}
+      \vskip 1em
+      {\large 工科学部\quad\@department\par}
+      \vskip 3em
+      {\large\@edepartment\par}
+      \vskip 3em
+      {\large International Professional University of Technology in Osaka\par}
+      \vskip 5em
+      {\large 学籍番号\quad\@gakuban\par}
+      \vskip 1em
+      {\large 氏\qquad 名（和名）\quad\@author\par}
+      \vskip 1em
+      {\large 氏\qquad 名（英文名）\quad\@eauthor\par}
+      \vskip 5em
+      {\large 指導教員（和名）\quad\@teachersone、\@teacherstwo、\@teachersthree\par}
+      \vskip 0.5em
+      {\large 指導教員（英文名）\quad\@eteachersone、\@eteacherstwo、\@eteachersthree\par}
+      \vskip 5em
+      {\large \@date~提出}
+    \end{center}
+    \par\vskip 2em
+  }
+  \def\mojiparline#1{
+    \newcounter{mpl}
+    \setcounter{mpl}{#1}
+    \@tempdima=\linewidth
+    \advance\@tempdima by-\value{mpl}zw
+    \addtocounter{mpl}{-1}
+    \divide\@tempdima by \value{mpl}
+    \advance\kanjiskip by\@tempdima
+    \advance\parindent by\@tempdima
+  }
+\makeatother
+\def\linesparpage#1{
+    \baselineskip=\textheight
+    \divide\baselineskip by #1
+}
